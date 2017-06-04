@@ -1,5 +1,7 @@
 # club-spa
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/richardschneider/club-spa.svg)](https://greenkeeper.io/)
+
 > A Vue.js project
 
 ## Build Setup
