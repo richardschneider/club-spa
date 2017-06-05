@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <error-view></error-view>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import errorView from '@/components/Error'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    errorView
+  }
 }
 </script>
 
