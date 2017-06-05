@@ -21,6 +21,7 @@
     <ul class="list-group">
       <slot name="results"
         v-for="item in results"
+        :filter="filter"
         :item="item">
         need a slot
       </slot>

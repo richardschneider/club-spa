@@ -4,7 +4,7 @@
       <template slot="results" scope="props">
         <li class="list-group-item">
           <router-link :to="{ name: 'club-sessions', params: { id: props.item.id }}">
-            {{ props.item.name }}
+            <highlight :text="props.item.name" :phrase="props.filter"></highlight>
           </router-link>
         </li>
       </template>
@@ -14,6 +14,7 @@
 
 <script>
 import search from '@/components/Search'
+import highlight from '@/components/Highlight'
 
 const query = '{ clubs {id name} }'
 
@@ -27,7 +28,8 @@ export default {
     return { clubs: [] }
   },
   components: {
-    search
+    search,
+    highlight
   }
 }
 </script>
