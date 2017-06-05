@@ -1,31 +1,16 @@
 <template>
   <div class="club">
-    <search></search>
-    <ul class="clubs list-group">
-       <li v-for="club in clubs" class="list-group-item">
-         <router-link :to="{ name: 'club-sessions', params: { id: club.id }}">{{ club.name }}</router-link>
-       </li>
-    </ul>
+    <search :items="clubs">
+      <template slot="results" scope="props">
+        <li class="list-group-item">
+          <router-link :to="{ name: 'club-sessions', params: { id: props.item.id }}">
+            {{ props.item.name }}
+          </router-link>
+        </li>
+      </template>
+    </search>
   </div>
 </template>
-
-<style>
-a,
-a:link,
-a:active,
-a:visited,
-a:hover {
-    color: black;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-.list-group-item {
-  border: none;
-}
-</style>
 
 <script>
 import search from '@/components/Search'

@@ -1,16 +1,19 @@
 <template>
   <div class="sessions">
-    <h1>Sessions for club {{ clubName }}</h1>
-    <ul class="clubs">
-       <li v-for="session in sessions">
-         {{ session.title }}
-         <!--router-link :to="{ name: 'session-result', params: { id: session.id }}">{{ session.title }}</router-link-->
-       </li>
-    </ul>
+    <h1>{{ clubName }}</h1>
+    <search :items="sessions">
+      <template slot="results" scope="props">
+        <li class="list-group-item">
+          {{ props.item.title }}
+          <!--router-link :to="{ name: 'session-result', params: { id: session.id }}">{{ session.title }}</router-link-->
+        </li>
+      </template>
+    </search>
   </div>
 </template>
 
 <script>
+import search from '@/components/Search'
 
 const query = `
 query club($id: ID!) {
@@ -30,6 +33,9 @@ export default {
   },
   data () {
     return { clubName: '', sessions: [] }
+  },
+  components: {
+    search
   },
   methods: {
     fetch (clubId) {

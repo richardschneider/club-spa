@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form class="search-form">
     <div class="form-group has-feedback">
       <input 
         type="text"
@@ -10,9 +10,50 @@
       <span class="form-control-feedback" v-if="filtering" v-on:click="clear" style="pointer-events: all; cursor: pointer">
           <strong>X</strong>
       </span>
-     </div>
+    </div>
+    
+    <div v-show="noresults">
+      <slot name="noresults">
+        No results
+      </slot>
+    </div>
+    
+    <ul class="list-group">
+      <slot name="results"
+        v-for="item in results"
+        :item="item">
+        need a slot
+      </slot>
+    </ul>
+    
   </form>
 </template>
+
+<style>
+.search-form a,
+.search-form a:link,
+.search-form a:active,
+.search-form a:visited,
+.search-form a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.search-form a:hover {
+    text-decoration: underline;
+}
+.search-form input {
+  padding:10px;
+	font-family: FontAwesome, "Open Sans", Verdana, "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+.search-form .list-group-item {
+  font-family: "Open Sans", Verdana, "Helvetica Neue",Helvetica,Arial,sans-serif;
+  border: none;
+}
+</style>
 
 <script>
 
@@ -21,7 +62,7 @@ export default {
     items: Array,
     placeholder: {
       type: String,
-      default: 'Search'
+      default: '\uF002 Search'
     }
   },
   data () {
@@ -30,7 +71,14 @@ export default {
     }
   },
   computed: {
-    filtering () { return this.filter.length > 0 }
+    filtering () { return this.filter.length > 0 },
+    noresults () { return this.filtering && this.results.length === 0 },
+    results () {
+      if (!this.filtering) return this.items
+      let q = this.filter.toLowerCase()
+      let m = o => Object.keys(o).some(k => o[k].toString().toLowerCase().indexOf(q) > -1)
+      return this.items.filter(e => m(e))
+    }
   },
   methods: {
     clear () { this.filter = '' }
