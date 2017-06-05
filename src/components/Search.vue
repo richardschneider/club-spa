@@ -45,13 +45,13 @@
 }
 .search-form input {
   padding:10px;
-	font-family: FontAwesome, "Open Sans", Verdana, "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: FontAwesome, "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;
 }
 .search-form .list-group-item {
-  font-family: "Open Sans", Verdana, "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: larger;
   border: none;
 }
 </style>
