@@ -50,10 +50,6 @@
     font-weight: normal;
     text-decoration: inherit;
 }
-.search-form .list-group-item {
-  font-size: larger;
-  border: none;
-}
 </style>
 
 <script>
