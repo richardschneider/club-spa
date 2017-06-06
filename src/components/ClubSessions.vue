@@ -5,6 +5,9 @@
       <template slot="results" scope="props">
         <li class="list-group-item">
           <highlight :text="props.item.title" :phrase="props.filter"></highlight>
+          <small>
+            <highlight :text="props.item.date" :phrase="props.filter"></highlight>
+          </small>
           <!--router-link :to="{ name: 'session-result', params: { id: session.id }}">{{ session.title }}</router-link-->
         </li>
       </template>
@@ -20,7 +23,7 @@ const query = `
 query club($id: ID!) {
   club(id: $id) {
     name
-    sessions {id title}
+    sessions {id title date}
   }
 }`
 
