@@ -1,8 +1,8 @@
 <template>
   <div class="session-results">
     <h3>{{ session.title}} <small>{{ session.date }}</small></h3>
-    <session-results-pairs direction="NS"></session-results-pairs>
-    <session-results-pairs direction="EW"></session-results-pairs>
+    <session-results-pairs direction="NS" :pairs="session.pairs"></session-results-pairs>
+    <session-results-pairs direction="EW" :pairs="session.pairs"></session-results-pairs>
   </div>
 </template>
 
