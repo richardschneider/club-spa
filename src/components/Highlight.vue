@@ -1,9 +1,9 @@
 <template>
-  <div class="highlight">
+  <span class="highlight">
     <span v-for="p in parts">
       <span v-bind:class="p.effect">{{ p.text }}</span>
     </span>
-  </div>
+  </span>
 </template>
 
 <style>
