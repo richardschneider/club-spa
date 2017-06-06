@@ -22,9 +22,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   margin-top: 10px;
 }
+
 .list-group-item {
   font-size: larger;
   border: none;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 </style>
