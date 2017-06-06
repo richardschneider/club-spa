@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Club from '@/components/Club'
 import ClubSessions from '@/components/ClubSessions'
+import SessionResults from '@/components/SessionResults'
 
 Vue.use(Router)
 
@@ -21,6 +22,11 @@ export default new Router({
       name: 'club-sessions',
       path: '/club/:id/sessions',
       component: ClubSessions
+    },
+    {
+      name: 'session-results',
+      path: '/session/:id/results',
+      component: SessionResults
     }
   ]
 })

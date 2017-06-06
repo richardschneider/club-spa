@@ -4,11 +4,12 @@
     <search :items="sessions">
       <template slot="results" scope="props">
         <li class="list-group-item">
-          <highlight :text="props.item.title" :phrase="props.filter"></highlight>
-          <small>
-            <highlight :text="props.item.date" :phrase="props.filter"></highlight>
-          </small>
-          <!--router-link :to="{ name: 'session-result', params: { id: session.id }}">{{ session.title }}</router-link-->
+          <router-link :to="{ name: 'session-results', params: { id: props.item.id }}">
+            <highlight :text="props.item.title" :phrase="props.filter"></highlight>
+            <small>
+              <highlight :text="props.item.date" :phrase="props.filter"></highlight>
+            </small>
+          </router-link>
         </li>
       </template>
     </search>
