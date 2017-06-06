@@ -1,13 +1,13 @@
 <template>
   <div class="session-results-pairs">
-    <h3>{{ title }}</h3>
-    <ol v-for="pair in rankedPairs" class="list-group">
-      <li class="list-group-item">
-        <span class="rank">1</span>
-        <span class="badge">50%</span>
-        <span>{{ pair.title }}</span>
-      </li>
-    </ol>
+    <h4>{{ title }}</h4>
+      <ol class="list-group">
+        <li v-for="pair in rankedPairs" class="list-group-item">
+          <span class="rank">1</span>
+          <span class="badge">50%</span>
+          <span>{{ pair.title }}</span>
+        </li>
+      </ol>
   </div>
 </template>
 
