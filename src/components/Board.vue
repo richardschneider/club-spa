@@ -16,7 +16,9 @@
         <td class="cell"><board-hand :hand="hand.east"></board-hand></td>
       </tr>
       <tr>
-        <td class="cell"></td>
+        <td class="cell hcp">
+          <board-hcp :hands="hand"></board-hcp>
+        </td>
         <td class="cell"><board-hand :hand="hand.south"></board-hand></td>
         <td class="cell"></td>
       </tr>
@@ -31,16 +33,22 @@
     padding-left: 1ex;
     vertical-align: top;
   }
+  .board .cell.hcp {
+    vertical-align: middle;
+    text-align: center;
+  }
 </style>
 
 <script>
 import BoardHand from '@/components/BoardHand'
+import BoardHcp from '@/components/BoardHcp'
 var bridge = require('bridge.js')
 
 export default {
   props: ['board'],
   components: {
-    BoardHand
+    BoardHand,
+    BoardHcp
   },
   data () {
     return {}
