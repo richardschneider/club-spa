@@ -1,4 +1,4 @@
-<template>
+Han<template>
   <div class="games table-responsive">
     <table class="table table-striped">
     <thead>
