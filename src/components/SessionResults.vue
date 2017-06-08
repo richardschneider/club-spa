@@ -7,9 +7,11 @@
         <session-results-pairs direction="NS" :pairs="session.pairs"></session-results-pairs>
         <session-results-pairs direction="EW" :pairs="session.pairs"></session-results-pairs>
       </tab>
-      <tab header="boards" v-show="session.boards">
-        <board :board="board"></board>
-        <games :games="board.games"></games>
+      <tab header="boards">
+        <div header="boards" v-if="session.boards">
+          <board :board="board"></board>
+          <games :games="board.games"></games>
+        </div>
       </tab>
       <tab header="ladder">
         NYI ladder
@@ -40,6 +42,8 @@ query session($id: ID!) {
         deal
         games {
           score
+          scoreNS
+          scoreEW
           made
           contract {
             level
@@ -70,7 +74,9 @@ export default {
   computed: {
     board () {
       let vm = this
-      return vm.session.boards.find(b => b.number === vm.boardNumber)
+      if (vm.session.boards) {
+        return vm.session.boards.find(b => b.number === vm.boardNumber)
+      }
     }
   },
   components: {
