@@ -1,6 +1,6 @@
 <template>
-  <div class="board-solution" v-if="solutions">
-    <table>
+  <div class="board-solutions" v-if="solutions">
+    <table class="solutions">
       <thead>
         <tr>
           <th></th>
@@ -24,6 +24,14 @@
 </template>
 
 <style>
+  table.solutions td, table.solutions th {
+    min-width: 1.3em;
+    line-height: 120%;
+    text-align: center;
+  }
+  table.solutions tbody {
+    font-size: small;
+  }
 </style>
 
 <script>
@@ -62,8 +70,9 @@ export default {
   },
   methods: {
     seatName (seat) {
-      let names = { N: 'north', S: 'south', E: 'east', W: 'west' }
-      return names[seat]
+      // let names = { N: 'north', S: 'south', E: 'east', W: 'west' }
+      // return names[seat]
+      return seat
     },
     makable (seat, strain) {
       let solution = this.solutions.find(s => s.declaror === seat && s.denomination === strain)

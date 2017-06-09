@@ -20,10 +20,10 @@
           <board-hcp :hands="hand"></board-hcp>
         </td>
         <td class="cell"><board-hand :hand="hand.south"></board-hand></td>
-        <td class="cell"></td>
+        <td class="cell"><board-solution :board="board"></board-solution></td>
       </tr>
     </table>
-    <board-solution :board="board"></board-solution>
+
   </div>
 </template>
 
