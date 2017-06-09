@@ -11,6 +11,10 @@
         <div header="boards" v-if="session.boards">
           <board :board="board"></board>
           <games :games="board.games"></games>
+            <ul class="pager">
+              <li><a v-on:click="nextBoard(-1)"><i class="fa fa-angle-left" aria-hidden="true"></i> previous</a></li>
+              <li><a v-on:click="nextBoard(1)">next <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+            </ul>
         </div>
       </tab>
       <tab header="ladder">
@@ -19,6 +23,12 @@
     </tabs>
   </div>
 </template>
+
+<style>
+  .pager {
+    cursor: pointer;
+  }
+</style>
 
 <script>
 import { tabs, tab } from 'vue-strap'
@@ -93,6 +103,12 @@ export default {
         .then(body => {
           vm.session = body.data.session
         })
+    },
+    nextBoard (incr) {
+      let n = this.boardNumber + incr
+      if (n < 1) n = this.session.boards.length
+      if (n > this.session.boards.length) n = 1
+      this.boardNumber = n
     }
   }
 }
