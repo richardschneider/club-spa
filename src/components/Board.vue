@@ -23,6 +23,7 @@
         <td class="cell"></td>
       </tr>
     </table>
+    <board-solution :board="board"></board-solution>
   </div>
 </template>
 
@@ -42,13 +43,15 @@
 <script>
 import BoardHand from '@/components/BoardHand'
 import BoardHcp from '@/components/BoardHcp'
+import BoardSolution from '@/components/BoardSolution'
 var bridge = require('bridge.js')
 
 export default {
   props: ['board'],
   components: {
     BoardHand,
-    BoardHcp
+    BoardHcp,
+    BoardSolution
   },
   data () {
     return {}
