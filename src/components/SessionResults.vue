@@ -46,6 +46,7 @@ query session($id: ID!) {
         direction
       }
       boards {
+        id
         number
         dealer
         vulnerability
@@ -62,7 +63,6 @@ query session($id: ID!) {
             risk
           }
         }
-
       }
     }
 }`

@@ -1,6 +1,6 @@
 <template>
-  <div class="board-solution" v-if="solution">
-    <table class="table">
+  <div class="board-solution" v-if="solutions">
+    <table>
       <thead>
         <tr>
           <th></th>
@@ -27,6 +27,16 @@
 </style>
 
 <script>
+const query = `
+query board($id: ID!) {
+  board(id: $id) {
+    solutions {
+      level
+      declaror
+      denomination
+    }
+  }
+}`
 
 export default {
   props: ['board'],
@@ -34,20 +44,20 @@ export default {
     return {
       seats: ['N', 'S', 'E', 'W'],
       strains: ['C', 'D', 'H', 'S', 'NT'],
-      solution: this.board.solution
+      solutions: null
     }
   },
   created () {
-    if (!this.solution) {
-      this.getSolution()
+    if (!this.solutions) {
+      this.getSolutions()
     }
   },
   watch: {
     board () {
       let vm = this
-      if (vm.board.solution) {
-        vm.solution = vm.board.solution
-      } else { vm.getSolution() }
+      if (vm.board.solutions) {
+        vm.solutions = vm.board.solutions
+      } else { vm.getSolutions() }
     }
   },
   methods: {
@@ -56,16 +66,17 @@ export default {
       return names[seat]
     },
     makable (seat, strain) {
-      return 1
+      let solution = this.solutions.find(s => s.declaror === seat && s.denomination === strain)
+      return solution ? solution.level : ''
     },
-    getSolution () {
+    getSolutions () {
       let vm = this
-      vm.solution = null
-      Promise.resolve()
-        .then(() => console.log('Need a solution'))
-        .then(() => {
-          vm.board.solution = 'foo'
-          vm.solution = 'foo'
+      vm.solutions = null
+      vm.$bridgeclub
+        .query(query, { id: vm.board.id })
+        .then(body => {
+          vm.board.solutions = body.data.board.solutions
+          vm.solutions = body.data.board.solutions
         })
     }
   }
