@@ -9,7 +9,9 @@
       </tab>
       <tab header="boards">
         <div header="boards" v-if="session.boards">
-          <board :board="board"></board>
+          <v-touch v-on:swiperight="nextBoard(1)" v-on:swipeleft="nextBoard(-1)">
+            <board :board="board"></board>
+          </v-touch>
           <games :games="board.games"></games>
             <ul class="pager">
               <li><a v-on:click="nextBoard(-1)"><i class="fa fa-angle-left" aria-hidden="true"></i> previous</a></li>

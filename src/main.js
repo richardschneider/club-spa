@@ -4,7 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import bridgeclub from './plugins/bridgeclub'
+import VueTouch from 'vue-touch'
 
+Vue.use(VueTouch, {name: 'v-touch'})
 Vue.use(bridgeclub)
 Vue.config.productionTip = false
 
