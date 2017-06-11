@@ -3,7 +3,7 @@
     <table class="solutions">
       <thead>
         <tr>
-          <th></th>
+          <th style="width: 2em"></th>
           <th class="clubs">&clubs;</th>
           <th class="diams">&diams;</th>
           <th class="hearts">&hearts;</th>
@@ -25,7 +25,7 @@
 
 <style>
   table.solutions td, table.solutions th {
-    min-width: 1.3em;
+    min-width: 1.5ex;
     line-height: 120%;
     text-align: center;
   }

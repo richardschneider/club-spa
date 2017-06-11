@@ -12,6 +12,10 @@
     padding-left: 1ex;
     list-style: none;
   }
+  .spades, .hearts, .diams, .clubs {
+    font-size: 120%;
+    line-height: 100%;
+  }
   .spades, .clubs {
     color: black;
   }
