@@ -48,6 +48,7 @@ export default {
   .__vev_calendar-wrapper .events-wrapper
   {
     padding-top: 0 !important;
+    color: inherit;
   }
   .__vev_calendar-wrapper .cal-wrapper .date-num,
   .__vev_calendar-wrapper .cal-wrapper .cal-body .weeks .item
