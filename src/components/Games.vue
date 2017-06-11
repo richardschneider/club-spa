@@ -16,8 +16,12 @@ Han<template>
     </thead>
     <tbody>
       <tr v-for="game in games">
-        <td>{{ game.contract.level }} {{ game.contract.denomination }} {{ game.contract.risk }}
-              <small>by</small> {{ game.contract.declaror }}
+        <td>
+          {{ game.contract.level }}
+          <denomination-name :denomination="game.contract.denomination"></denomination-name>
+          {{ game.contract.risk }}
+          <small>by</small>
+          {{ game.contract.declaror }}
         </td>
         <td><card-name :card="game.lead"></card-name></td>
         <td>{{ game.made }}</td>
@@ -44,11 +48,13 @@ Han<template>
 
 <script>
 import cardName from '@/components/CardName'
+import denominationName from '@/components/DenominationName'
 
 export default {
   props: ['games'],
   components: {
-    cardName
+    cardName,
+    denominationName
   }
 }
 
