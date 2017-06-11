@@ -1,18 +1,22 @@
 <template>
   <div class="sessions">
     <h1>{{ clubName }}</h1>
-    <search :items="sessions">
-      <template slot="results" scope="props">
-        <li class="list-group-item">
-          <router-link :to="{ name: 'session-results', params: { id: props.item.id }}">
-            <highlight :text="props.item.title" :phrase="props.filter"></highlight>
-            <small>
-              <highlight :text="props.item.date" :phrase="props.filter"></highlight>
-            </small>
-          </router-link>
-        </li>
+    <vue-event-calendar :events="sessions">props.showEvents
+      <template scope="props">
+      <search :items="props.showEvents">
+        <template slot="results" scope="props">
+          <li class="list-group-item">
+            <router-link :to="{ name: 'session-results', params: { id: props.item.id }}">
+              <highlight :text="props.item.title" :phrase="props.filter"></highlight>
+              <small>
+                <highlight :text="props.item.date" :phrase="props.filter"></highlight>
+              </small>
+            </router-link>
+          </li>
+        </template>
+      </search>
       </template>
-    </search>
+    </vue-event-calendar>
   </div>
 </template>
 
@@ -48,7 +52,13 @@ export default {
       let vm = this
       vm.$bridgeclub.query(query, { id: clubId })
         .then(body => {
-          vm.sessions = body.data.club.sessions
+          let sessions = body.data.club.sessions
+            .map(s => {
+              let p = s.date.split('-')
+              s.date = `${p[0]}/${p[1]}/${p[2]}` // Y/M/D
+              return s
+            })
+          vm.sessions = sessions
           vm.clubName = body.data.club.name
         })
     }

@@ -44,4 +44,38 @@ export default {
   color: white;
 }
 
+  .__vev_calendar-wrapper .cal-wrapper,
+  .__vev_calendar-wrapper .events-wrapper
+  {
+    padding-top: 0 !important;
+  }
+  .__vev_calendar-wrapper .cal-wrapper .date-num,
+  .__vev_calendar-wrapper .cal-wrapper .cal-body .weeks .item
+  {
+    line-height: 30px !important;
+  }
+  .__vev_calendar-wrapper .cal-wrapper .cal-header {
+    padding-bottom: 0 !important;
+  }
+  .__vev_calendar-wrapper .cal-wrapper .cal-body .dates .item .is-event,
+  .__vev_calendar-wrapper .cal-wrapper .cal-body .dates .item .is-today
+  {
+    width: 28px;
+    height: 28px;
+    margin-left: -14px;
+    margin-top: -15px;
+    box-shadow: 0 0 1px #f29543;
+  }
+  .__vev_calendar-wrapper .events-wrapper {
+    background-color: inherit !important;
+  }
+  .__vev_calendar-wrapper .events-wrapper .event-item {
+    padding: 0;
+    margin-top: 0;
+    box-shadow: none;
+  }
+  .__vev_calendar-wrapper .events-wrapper .date
+  {
+    display: none;
+  }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <form class="search-form">
     <div class="form-group has-feedback">
-      <input 
+      <input
         type="text"
         class="form-control"
         v-model="filter"
@@ -11,13 +11,13 @@
           <strong>X</strong>
       </span>
     </div>
-    
+
     <div v-show="noresults">
       <slot name="noresults">
         No results
       </slot>
     </div>
-    
+
     <ul class="list-group">
       <slot name="results"
         v-for="item in results"
@@ -26,7 +26,7 @@
         need a slot
       </slot>
     </ul>
-    
+
   </form>
 </template>
 
@@ -49,6 +49,12 @@
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;
+}
+
+.search-form .list-group {
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 </style>
 
