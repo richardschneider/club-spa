@@ -19,7 +19,7 @@ Han<template>
         <td>{{ game.contract.level }} {{ game.contract.denomination }} {{ game.contract.risk }}
               <small>by</small> {{ game.contract.declaror }}
         </td>
-        <td>{{ game.lead }}</td>
+        <td><card-name :card="game.lead"></card-name></td>
         <td>{{ game.made }}</td>
         <td>{{ game.NS.score }}</td>
         <td>{{ game.NS.matchpoints }}</td>
@@ -43,11 +43,12 @@ Han<template>
 </style>
 
 <script>
+import cardName from '@/components/CardName'
 
 export default {
   props: ['games'],
-  data () {
-    return {}
+  components: {
+    cardName
   }
 }
 
