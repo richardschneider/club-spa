@@ -54,9 +54,9 @@ query session($id: ID!) {
         vulnerability
         deal
         games {
-          score
-          scoreNS
-          scoreEW
+          lead
+          NS { score matchpoints matchpointsPercentage }
+          EW { score matchpoints matchpointsPercentage }
           made
           contract {
             level

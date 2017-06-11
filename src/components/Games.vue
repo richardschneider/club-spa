@@ -19,14 +19,14 @@ Han<template>
         <td>{{ game.contract.level }} {{ game.contract.denomination }} {{ game.contract.risk }}
               <small>by</small> {{ game.contract.declaror }}
         </td>
-        <td>SA</td>
+        <td>{{ game.lead }}</td>
         <td>{{ game.made }}</td>
-        <td>{{ game.scoreNS }}</td>
-        <td>23</td>
-        <td>50</td>
-        <td>{{ game.scoreEW }}</td>
-        <td>23</td>
-        <td>50</td>
+        <td>{{ game.NS.score }}</td>
+        <td>{{ game.NS.matchpoints }}</td>
+        <td>{{ game.NS.matchpointsPercentage }}</td>
+        <td>{{ game.EW.score }}</td>
+        <td>{{ game.EW.matchpoints }}</td>
+        <td>{{ game.EW.matchpointsPercentage }}</td>
       </tr>
     </tbody>
   </table>
