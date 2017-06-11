@@ -1,7 +1,9 @@
 <template>
   <div class="sessions">
     <h1>{{ clubName }}</h1>
-    <vue-event-calendar :events="sessions">props.showEvents
+    <vue-event-calendar
+      :events="sessions"
+      @month-changed="fetch()">
       <template scope="props">
       <search :items="props.showEvents">
         <template slot="results" scope="props">
@@ -50,6 +52,8 @@ export default {
   methods: {
     fetch (clubId) {
       let vm = this
+      clubId = clubId || vm.clubId
+      vm.clubId = clubId
       vm.$bridgeclub.query(query, { id: clubId })
         .then(body => {
           let sessions = body.data.club.sessions
