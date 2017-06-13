@@ -55,8 +55,8 @@ query session($id: ID!) {
         deal
         games {
           lead
-          NS { score matchpoints matchpointsPercentage }
-          EW { score matchpoints matchpointsPercentage }
+          NS { pair { shortTitle } matchpointsPercentage }
+          EW { pair { shortTitle } matchpointsPercentage }
           made
           contract {
             level

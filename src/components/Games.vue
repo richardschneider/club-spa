@@ -1,16 +1,13 @@
-Han<template>
+<template>
   <div class="games table-responsive">
     <table class="table table-striped">
     <thead>
       <tr>
         <th>contract</th>
         <th>lead</th>
-        <th>made</th>
-        <th>NS <br/>score</th>
-        <th>mp</th>
+        <th>NS</th>
         <th>%</th>
-        <th>EW <br/>score</th>
-        <th>mp</th>
+        <th>EW</th>
         <th>%</th>
       </tr>
     </thead>
@@ -22,14 +19,12 @@ Han<template>
           {{ game.contract.risk }}
           <small>by</small>
           {{ game.contract.declaror }}
+          {{ made(game.made) }}
         </td>
         <td><card-name :card="game.lead"></card-name></td>
-        <td>{{ game.made }}</td>
-        <td>{{ game.NS.score }}</td>
-        <td>{{ game.NS.matchpoints }}</td>
+        <td>{{ game.NS.pair.shortTitle }}</td>
         <td>{{ game.NS.matchpointsPercentage }}</td>
-        <td>{{ game.EW.score }}</td>
-        <td>{{ game.EW.matchpoints }}</td>
+        <td>{{ game.EW.pair.shortTitle }}</td>
         <td>{{ game.EW.matchpointsPercentage }}</td>
       </tr>
     </tbody>
@@ -55,6 +50,13 @@ export default {
   components: {
     cardName,
     denominationName
+  },
+  methods: {
+    made (result) {
+      if (result === 0) return '='
+      if (result > 0) return '+' + result
+      return result
+    }
   }
 }
 
