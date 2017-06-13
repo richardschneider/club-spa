@@ -1,9 +1,9 @@
 <template>
   <ol class="board-hand">
-    <li><span class="spades">&spades;</span> {{ cards('S') }}</li>
-    <li><span class="hearts">&hearts;</span> {{ cards('H') }}</li>
-    <li><span class="diams">&diams;</span> {{ cards('D') }}</li>
-    <li><span class="clubs">&clubs;</span> {{ cards('C') }}</li>
+    <li><span class="spades">&spades;</span> <span class="cards">{{ cards('S') }}</span></li>
+    <li><span class="hearts">&hearts;</span> <span class="cards">{{ cards('H') }}</span></li>
+    <li><span class="diams">&diams;</span> <span class="cards">{{ cards('D') }}</span></li>
+    <li><span class="clubs">&clubs;</span> <span class="cards">{{ cards('C') }}</span></li>
   </ol>
 </template>
 
@@ -11,6 +11,10 @@
   .board-hand {
     padding-left: 1ex;
     list-style: none;
+    font-family: monospace;
+  }
+  .board-hand .cards {
+    letter-spacing  : 1.5px;
   }
   .spades, .hearts, .diams, .clubs {
     font-size: 120%;

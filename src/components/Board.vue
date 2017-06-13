@@ -29,7 +29,7 @@
 
 <style>
   .board .cell {
-    min-width: 14ex;
+    min-width: 15ex;
     padding-right: 1ex;
     padding-left: 1ex;
     vertical-align: top;
