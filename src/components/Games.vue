@@ -16,7 +16,7 @@
         <td>
           {{ game.contract.level }}
           <denomination-name :denomination="game.contract.denomination"></denomination-name>
-          {{ game.contract.risk }}
+          <span class="risk">{{ game.contract.risk }}</span>
           <small>by</small>
           {{ game.contract.declaror }}
           {{ made(game.made) }}
@@ -46,6 +46,9 @@
   }
   .games .percent {
     color: blue;
+  }
+  .games .risk {
+    font-weight: bold;
   }
 </style>
 
