@@ -22,9 +22,17 @@
           {{ made(game.made) }}
         </td>
         <td><card-name :card="game.lead"></card-name></td>
-        <td>{{ game.NS.pair.shortTitle }}</td>
+        <td>
+          <router-link :to="{ name: 'session-pair-results', params: { id: game.NS.pair.id }}">
+            {{ game.NS.pair.shortTitle }}
+          </router-link>
+        </td>
         <td>{{ game.NS.matchpointsPercentage }}</td>
-        <td>{{ game.EW.pair.shortTitle }}</td>
+        <td>
+          <router-link :to="{ name: 'session-pair-results', params: { id: game.EW.pair.id }}">
+            {{ game.EW.pair.shortTitle }}
+          </router-link>
+        </td>
         <td>{{ game.EW.matchpointsPercentage }}</td>
       </tr>
     </tbody>

@@ -13,7 +13,11 @@
         <tbody>
           <tr v-for="pair in rankedPairs">
             <td>1</td>
-            <td>{{ pair.title }}</td>
+            <td>
+              <router-link :to="{ name: 'session-pair-results', params: { id: pair.id }}">
+                {{ pair.title }}
+              </router-link>
+            </td>
             <td>50.12</td>
           </tr>
         </tbody>
