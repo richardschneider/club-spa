@@ -11,7 +11,6 @@
   .board-hand {
     padding-left: 1ex;
     list-style: none;
-    font-family: monospace;
   }
   .board-hand .cards {
     letter-spacing  : 1.5px;

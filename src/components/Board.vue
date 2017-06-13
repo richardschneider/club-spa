@@ -7,12 +7,10 @@
           dealer {{ board.dealer }} <br/>
           vuln {{ board.vulnerability}}
         </td>
-        <td class="cell"><board-hand :hand="hand.north"></board-hand></td>
-        <td class="cell"></td>
+        <td class="cell" colspan="2"><board-hand :hand="hand.north"></board-hand></td>
       </tr>
       <tr>
-        <td class="cell"><board-hand :hand="hand.west"></board-hand></td>
-        <td class="cell"></td>
+        <td class="cell" colspan="2"><board-hand :hand="hand.west"></board-hand></td>
         <td class="cell"><board-hand :hand="hand.east"></board-hand></td>
       </tr>
       <tr>
