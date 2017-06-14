@@ -47,6 +47,11 @@ query session($id: ID!) {
         id
         title
         direction
+        ranking {
+          rank
+          tied
+          score
+        }
       }
       boards {
         id
