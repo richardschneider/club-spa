@@ -1,13 +1,13 @@
 <template>
   <div class="session-pair-results">
-    <h3>{{ pair.title }}</h3>
+    <h3>{{ pair.title }} <small>as {{ pair.direction }}</small></h3>
     <h4 v-if="pair.session">
       <router-link :to="{ name: 'session-results', params: { id: pair.session.id }}">
         {{ pair.session.title }}
     </router-link>
     <small>{{ pair.session.date }}</small>
     </h4>
-    <games v-if="pair.games" :games="pair.games"></games>
+    <my-games v-if="pair.games" :pair="pair"></my-games>
   </div>
 </template>
 
@@ -15,14 +15,16 @@
 </style>
 
 <script>
-import Games from '@/components/Games'
+import MyGames from '@/components/MyGames'
 
 const query = `
 query sessionPair($id: ID!) {
   sessionPair(id: $id) {
     title
+    direction
     session { id title date }
     games {
+      board { id number }
       lead
       NS { pair { id shortTitle } matchpointsPercentage }
       EW { pair { id shortTitle } matchpointsPercentage }
@@ -53,7 +55,7 @@ export default {
   computed: {
   },
   components: {
-    Games
+    MyGames
   },
   methods: {
     fetch (pairId) {
