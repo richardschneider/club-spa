@@ -2,6 +2,7 @@
 // $bridgeclub is available to all vue instances.
 
 import { EventBus } from '@/eventbus.js'
+const memoize = require('p-memoize')
 
 var server = require('graphql-client')({
   url: 'http://192.168.178.21:3001/graphql',
@@ -20,7 +21,7 @@ function query (query, variables) {
 
 const plugin = {
   install (Vue, options) {
-    Vue.prototype.$bridgeclub = { query: query }
+    Vue.prototype.$bridgeclub = { query: memoize(query) }
   }
 }
 
