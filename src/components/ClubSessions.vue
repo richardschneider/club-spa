@@ -59,8 +59,9 @@ export default {
           let sessions = body.data.club.sessions
             .map(s => {
               let p = s.date.split('-')
-              s.date = `${p[0]}/${p[1]}/${p[2]}` // Y/M/D
-              return s
+              let copy = Object.assign({}, s)
+              copy.date = `${p[0]}/${p[1]}/${p[2]}` // Y/M/D
+              return copy
             })
           vm.sessions = sessions
           vm.clubName = body.data.club.name
