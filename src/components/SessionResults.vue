@@ -8,15 +8,15 @@
         <session-results-pairs direction="EW" :pairs="session.pairs"></session-results-pairs>
       </tab>
       <tab header="boards">
-        <div header="boards" v-if="session.boards">
+        <div header="boards" v-if="board">
           <v-touch v-on:swiperight="nextBoard(1)" v-on:swipeleft="nextBoard(-1)">
             <board :board="board"></board>
           </v-touch>
           <games :games="board.games"></games>
-            <ul class="pager">
-              <li><a v-on:click="nextBoard(-1)"><i class="fa fa-angle-left" aria-hidden="true"></i> previous</a></li>
-              <li><a v-on:click="nextBoard(1)">next <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-            </ul>
+          <ul class="pager" v-if="session.boards.length > 1">
+            <li><a v-on:click="nextBoard(-1)"><i class="fa fa-angle-left" aria-hidden="true"></i> previous</a></li>
+            <li><a v-on:click="nextBoard(1)">next <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+          </ul>
         </div>
       </tab>
       <tab header="ladder">
