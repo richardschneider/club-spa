@@ -42,6 +42,7 @@ export default {
       let vm = this
       return (vm.pairs || [])
         .filter(p => p.direction === vm.direction)
+        .sort((a, b) => a.ranking.rank - b.ranking.rank)
     }
   },
   methods: {
