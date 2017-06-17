@@ -9,7 +9,7 @@
       </tab>
       <tab :header="boardsHeader">
         <div header="boards" v-if="board">
-          <v-touch v-on:swiperight="nextBoard(1)" v-on:swipeleft="nextBoard(-1)">
+          <v-touch v-on:swiperight="nextBoard(-1)" v-on:swipeleft="nextBoard(1)">
             <board :board="board"></board>
           </v-touch>
           <games :games="board.games"></games>
