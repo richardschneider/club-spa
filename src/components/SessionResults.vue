@@ -7,7 +7,7 @@
         <session-results-pairs direction="NS" :pairs="session.pairs"></session-results-pairs>
         <session-results-pairs direction="EW" :pairs="session.pairs"></session-results-pairs>
       </tab>
-      <tab header="boards">
+      <tab :header="boardsHeader">
         <div header="boards" v-if="board">
           <v-touch v-on:swiperight="nextBoard(1)" v-on:swipeleft="nextBoard(-1)">
             <board :board="board"></board>
@@ -95,6 +95,11 @@ export default {
       if (vm.session.boards) {
         return vm.session.boards.find(b => b.number === vm.boardNumber)
       }
+    },
+    boardsHeader () {
+      let vm = this
+      let n = (vm.session && vm.session.boards) ? vm.session.boards.length : 0
+      return `boards <span class='badge'>${n}</span>`
     }
   },
   components: {
