@@ -1,5 +1,5 @@
 <template>
-  <span class="card-name">
+  <span class="card-name" v-if="card">
     <span :class="suitClass" v-html="suit"></span><span class="suitRank">{{ rank }}</span>
   </span>
 </template>
