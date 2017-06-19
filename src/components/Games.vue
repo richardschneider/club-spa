@@ -13,13 +13,16 @@
     </thead>
     <tbody>
       <tr v-for="game in games">
-        <td>
+        <td v-if="game.contract.level === 0">
+          passed
+        </td>
+        <td v-else>
           {{ game.contract.level }}
           <denomination-name :denomination="game.contract.denomination"></denomination-name>
           <span class="risk">{{ game.contract.risk }}</span>
           <small>by</small>
           {{ game.contract.declaror }}
-          {{ made(game.made) }}
+          {{ made(game) }}
         </td>
         <td><card-name :card="game.lead"></card-name></td>
         <td>
@@ -63,10 +66,11 @@ export default {
     denominationName
   },
   methods: {
-    made (result) {
+    made (game) {
+      if (game.made < 0) return game.made
+      let result = game.made - game.contract.level
       if (result === 0) return '='
-      if (result > 0) return '+' + result
-      return result
+      return '+' + result
     }
   }
 }
