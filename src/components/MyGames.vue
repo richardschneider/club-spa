@@ -3,7 +3,10 @@
     <table class="table table-striped">
     <thead>
       <tr>
-        <th>board</th>
+        <th>
+          <span class="visible-xs-inline">#</span>
+          <span class="hidden-xs">board</span>
+        </th>
         <th>contract</th>
         <th>lead</th>
         <th>%</th>
