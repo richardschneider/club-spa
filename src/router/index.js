@@ -5,6 +5,7 @@ import Club from '@/components/Club'
 import ClubSessions from '@/components/ClubSessions'
 import SessionResults from '@/pages/SessionResults'
 import SessionPairResults from '@/pages/SessionPairResults'
+import Board from '@/pages/Board'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       name: 'session-results',
       path: '/session/:id/results',
       component: SessionResults
+    },
+    {
+      name: 'board',
+      path: '/board/:id',
+      component: Board
     },
     {
       name: 'session-pair-results',

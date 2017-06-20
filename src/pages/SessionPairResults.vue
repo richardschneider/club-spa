@@ -4,7 +4,7 @@
     <h4 v-if="pair.session">
       <router-link :to="{ name: 'session-results', params: { id: pair.session.id }}">
         {{ pair.session.title }}
-    </router-link>
+      </router-link>
     <small>{{ pair.session.date }}</small>
     </h4>
     <my-games v-if="pair.games" :pair="pair"></my-games>

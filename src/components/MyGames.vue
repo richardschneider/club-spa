@@ -15,7 +15,11 @@
     </thead>
     <tbody>
       <tr v-for="game in orderdGames">
-        <td>{{ game.board.number }}</td>
+        <td>
+          <router-link :to="{ name: 'board', params: { id: game.board.id }}">
+            {{ game.board.number }}
+          </router-link>
+        </td>
         <td v-if="game.contract.level === 0">
           passed
         </td>
