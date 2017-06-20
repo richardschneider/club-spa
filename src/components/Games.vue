@@ -50,9 +50,7 @@
   .games .percent {
     color: blue;
   }
-  .games .risk {
-    font-weight: bold;
-  }
+
 </style>
 
 <script>

@@ -23,6 +23,21 @@ export default {
   margin-top: 10px;
 }
 
+.spades, .hearts, .diams, .clubs {
+  font-size: 120%;
+  line-height: 100%;
+}
+.spades, .clubs {
+  color: black;
+}
+.hearts, .diams {
+  color: red;
+}
+
+.risk {
+  font-weight: bold;
+}
+
 .list-group-item {
   font-size: larger;
   border: none;

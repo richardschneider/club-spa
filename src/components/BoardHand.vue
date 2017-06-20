@@ -15,17 +15,7 @@
   .board-hand .cards {
     letter-spacing  : 1.5px;
   }
-  .spades, .hearts, .diams, .clubs {
-    font-size: 120%;
-    line-height: 100%;
-  }
-  .spades, .clubs {
-    color: black;
-  }
-  .hearts, .diams {
-    color: red;
-  }
-</style>
+ </style>
 
 <script>
 
