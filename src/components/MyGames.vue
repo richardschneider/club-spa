@@ -32,7 +32,9 @@
           {{ made(game) }}
         </td>
         <td><card-name :card="game.lead"></card-name></td>
-        <td>{{ us(game).matchpointsPercentage.toFixed(2) }}</td>
+        <td>
+          <percent :value="us(game).matchpointsPercentage"></percent>
+        </td>
         <td>
           <router-link :to="{ name: 'session-pair-results', params: { id: them(game).pair.id }}">
             {{ them(game).pair.shortTitle }}
@@ -56,12 +58,14 @@
 <script>
 import cardName from '@/components/CardName'
 import denominationName from '@/components/DenominationName'
+import percent from '@/components/percent'
 
 export default {
   props: ['pair'],
   components: {
     cardName,
-    denominationName
+    denominationName,
+    percent
   },
   computed: {
     orderdGames () {

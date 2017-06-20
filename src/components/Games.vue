@@ -30,13 +30,17 @@
             {{ game.NS.pair.shortTitle }}
           </router-link>
         </td>
-        <td>{{ game.NS.matchpointsPercentage.toFixed(2) }}</td>
+        <td>
+          <percent :value="game.NS.matchpointsPercentage"></percent>
+        </td>
         <td>
           <router-link :to="{ name: 'session-pair-results', params: { id: game.EW.pair.id }}">
             {{ game.EW.pair.shortTitle }}
           </router-link>
         </td>
-        <td>{{ game.EW.matchpointsPercentage.toFixed(2) }}</td>
+        <td>
+          <percent :value="game.EW.matchpointsPercentage"></percent>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -56,12 +60,14 @@
 <script>
 import cardName from '@/components/CardName'
 import denominationName from '@/components/DenominationName'
+import percent from '@/components/percent'
 
 export default {
   props: ['games'],
   components: {
     cardName,
-    denominationName
+    denominationName,
+    percent
   },
   methods: {
     made (game) {

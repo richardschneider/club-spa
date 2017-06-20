@@ -18,7 +18,9 @@
                 {{ pair.title }}
               </router-link>
             </td>
-            <td>{{ pair.ranking.score.toFixed(2) }}</td>
+            <td>
+              <percent :value="pair.ranking.score"></percent>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -27,10 +29,15 @@
 </template>
 
 <script>
+import percent from '@/components/percent'
+
 export default {
   props: {
     direction: String,
     pairs: Array
+  },
+  components: {
+    percent
   },
   data () {
     return {
@@ -44,8 +51,6 @@ export default {
         .filter(p => p.direction === vm.direction)
         .sort((a, b) => a.ranking.rank - b.ranking.rank)
     }
-  },
-  methods: {
   }
 }
 
