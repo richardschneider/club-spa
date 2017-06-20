@@ -13,7 +13,10 @@
     <tbody>
       <tr v-for="game in pair.games">
         <td>{{ game.board.number }}</td>
-        <td>
+        <td v-if="game.contract.level === 0">
+          passed
+        </td>
+        <td v-else>
           {{ game.contract.level }}
           <denomination-name :denomination="game.contract.denomination"></denomination-name>
           <span class="risk">{{ game.contract.risk }}</span>
