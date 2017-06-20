@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="game in pair.games">
+      <tr v-for="game in orderdGames">
         <td>{{ game.board.number }}</td>
         <td v-if="game.contract.level === 0">
           passed
@@ -61,6 +61,11 @@ export default {
   components: {
     cardName,
     denominationName
+  },
+  computed: {
+    orderdGames () {
+      return this.pair.games.slice().sort((a, b) => this.us(b).matchpointsPercentage - this.us(a).matchpointsPercentage)
+    }
   },
   methods: {
     made (game) {
