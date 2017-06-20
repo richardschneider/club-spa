@@ -30,13 +30,13 @@
             {{ game.NS.pair.shortTitle }}
           </router-link>
         </td>
-        <td>{{ game.NS.matchpointsPercentage }}</td>
+        <td>{{ game.NS.matchpointsPercentage.toFixed(2) }}</td>
         <td>
           <router-link :to="{ name: 'session-pair-results', params: { id: game.EW.pair.id }}">
             {{ game.EW.pair.shortTitle }}
           </router-link>
         </td>
-        <td>{{ game.EW.matchpointsPercentage }}</td>
+        <td>{{ game.EW.matchpointsPercentage.toFixed(2) }}</td>
       </tr>
     </tbody>
   </table>

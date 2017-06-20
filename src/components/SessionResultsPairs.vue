@@ -18,7 +18,7 @@
                 {{ pair.title }}
               </router-link>
             </td>
-            <td>{{ pair.ranking.score }}</td>
+            <td>{{ pair.ranking.score.toFixed(2) }}</td>
           </tr>
         </tbody>
       </table>
