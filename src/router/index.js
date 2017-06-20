@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import Hello from '@/pages/Hello'
 import Club from '@/components/Club'
 import ClubSessions from '@/components/ClubSessions'
-import SessionResults from '@/components/SessionResults'
-import SessionPairResults from '@/components/SessionPairResults'
+import SessionResults from '@/pages/SessionResults'
+import SessionPairResults from '@/pages/SessionPairResults'
 
 Vue.use(Router)
 
