@@ -7,15 +7,34 @@
       </router-link>
     <small>{{ pair.session.date }}</small>
     </h4>
+    <p v-if="pair.ranking && pair.ranking.rank !== 0"><star-rating
+        :inline="true"
+        inactive-color="white"
+        :item-size="20"
+        :read-only="true"
+        :rating="stars"
+        :show-rating="false"
+        :increment="0.01">
+      </star-rating>
+      <br />
+      Ranking
+      {{ pair.ranking.rank }}
+      <percent :value="pair.ranking.score"></percent>%
+    </p>
     <my-games v-if="pair.games" :pair="pair"></my-games>
   </div>
 </template>
 
 <style>
+  .rating-container.inline {
+    margin-left: 0;
+  }
 </style>
 
 <script>
 import MyGames from '@/components/MyGames'
+import percent from '@/components/percent'
+import {StarRating} from 'vue-rate-it'
 
 const query = `
 query sessionPair($id: ID!) {
@@ -23,6 +42,12 @@ query sessionPair($id: ID!) {
     title
     direction
     session { id title date }
+    ranking {
+      rank
+      tied
+      score
+      scale
+    }
     games {
       board { id number }
       lead
@@ -53,9 +78,14 @@ export default {
     }
   },
   computed: {
+    stars () {
+      return this.pair.ranking.scale * 5
+    }
   },
   components: {
-    MyGames
+    MyGames,
+    percent,
+    StarRating
   },
   methods: {
     fetch (pairId) {
