@@ -19,7 +19,7 @@
       <br />
       Ranking
       {{ pair.ranking.rank }}
-      <percent :value="pair.ranking.score"></percent>%
+      with <percent :value="pair.ranking.score"></percent>%
     </p>
     <my-games v-if="pair.games" :pair="pair"></my-games>
   </div>
