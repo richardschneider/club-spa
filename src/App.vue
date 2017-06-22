@@ -94,4 +94,21 @@ export default {
   {
     display: none;
   }
+
+  .panel-data {
+    margin-bottom: 15px;
+  }
+
+  .panel-data>.panel-heading {
+    line-height: 1;
+    color: darkkhaki;
+    padding: 0;
+    border: 0;
+    margin: 0;
+  }
+
+  .panel-data>.panel-body {
+    padding: 3px 0;
+  }
+
 </style>

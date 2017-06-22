@@ -21,20 +21,20 @@
         <board :board="game.board"></board>
       </div>
       <div class="col-sm-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">Contract</div>
+        <div class="panel panel-data">
+          <div class="panel-heading">contract</div>
           <div class="panel-body">
             <game-contract :game="game"></game-contract>
           </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">Auction</div>
+        <div class="panel panel-data">
+          <div class="panel-heading">auction</div>
           <div class="panel-body">
             {{ game.auction }}
           </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">Play</div>
+        <div class="panel panel-data">
+          <div class="panel-heading">play</div>
           <div class="panel-body">
             NYI
           </div>
