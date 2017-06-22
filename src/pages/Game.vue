@@ -30,7 +30,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">Auction</div>
           <div class="panel-body">
-            NYI
+            {{ game.auction }}
           </div>
         </div>
         <div class="panel panel-default">
