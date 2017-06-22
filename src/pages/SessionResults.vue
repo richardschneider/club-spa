@@ -60,6 +60,7 @@ query session($id: ID!) {
         vulnerability
         deal
         games {
+          id
           lead
           NS { pair { id shortTitle } matchpointsPercentage }
           EW { pair { id shortTitle } matchpointsPercentage }

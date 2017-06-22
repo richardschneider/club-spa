@@ -49,6 +49,7 @@ query sessionPair($id: ID!) {
       scale
     }
     games {
+      id
       board { id number }
       lead
       NS { pair { id shortTitle } matchpointsPercentage }

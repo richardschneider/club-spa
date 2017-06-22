@@ -29,6 +29,7 @@ query board($id: ID!) {
       date
     }
     games {
+      id
       lead
       NS { pair { id shortTitle } matchpointsPercentage }
       EW { pair { id shortTitle } matchpointsPercentage }

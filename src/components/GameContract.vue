@@ -1,16 +1,18 @@
 <template>
   <span class="game-contract">
-    <span v-if="game.contract.level === 0">
-      passed
-    </span>
-    <span v-else>
-      {{ game.contract.level }}
-      <denomination-name :denomination="game.contract.denomination"></denomination-name>
-      <span class="risk">{{ game.contract.risk }}</span>
-      <small>by</small>
-      {{ game.contract.declaror }}
-      {{ made }}
-    </span>
+    <router-link :to="{ name: 'game', params: { id: game.id }}">
+      <span v-if="game.contract.level === 0">
+        passed
+      </span>
+      <span v-else>
+        {{ game.contract.level }}
+        <denomination-name :denomination="game.contract.denomination"></denomination-name>
+        <span class="risk">{{ game.contract.risk }}</span>
+        <small>by</small>
+        {{ game.contract.declaror }}
+        {{ made }}
+      </span>
+    </router-link>
   </span>
 </template>
 
@@ -31,5 +33,18 @@ export default {
     }
   }
 }
-
 </script>
+
+<style>
+  .game-contract a,
+  .game-contract a:link,
+  .game-contract a:active,
+  .game-contract a:visited,
+  .game-contract a:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+  .game-contract a:hover {
+    text-decoration: underline;
+  }
+</style>
