@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <span class="auction">dealer {{auction.dealer.toString()}} seats {{ seats }} bids {{auction.toString()}}</span>
-    <table>
+  <div v-if="auction.bids.length > 0">
+    <table class="auction">
       <thead>
         <tr>
           <th v-for="seat in seats">{{ seat }}</th>
@@ -10,7 +9,7 @@
       <tbody>
         <tr v-for="row in rows">
           <td v-for="bid in row">
-            {{ bid.toString() }}
+            <bid-name :bid="bid"></bid-name>
           </td>
         </tr>
       </tbody>
@@ -19,12 +18,12 @@
 </template>
 
 <script>
-import DenominationName from '@/components/DenominationName'
+import BidName from '@/components/BidName'
 
 export default {
   props: ['auction'],
   components: {
-    DenominationName
+    BidName
   },
   computed: {
     seats () {
@@ -48,3 +47,13 @@ export default {
   }
 }
 </script>
+
+<style>
+  .auction th {
+    min-width: 3.3em;
+    font-size: 90%;
+  }
+  .auction thead {
+    border-bottom: 1px solid silver;
+  }
+</style>

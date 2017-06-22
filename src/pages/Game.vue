@@ -27,7 +27,7 @@
             <game-contract :game="game"></game-contract>
           </div>
         </div>
-        <div class="panel panel-data">
+        <div class="panel panel-data" v-if="auction.bids.length">
           <div class="panel-heading">auction</div>
           <div class="panel-body">
             <auction :auction="auction"></auction>

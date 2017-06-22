@@ -109,6 +109,7 @@ export default {
 
   .panel-data>.panel-body {
     padding: 3px 0;
+    font-size: 110%;
   }
 
 </style>
