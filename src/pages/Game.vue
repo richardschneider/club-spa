@@ -30,7 +30,7 @@
         <div class="panel panel-data">
           <div class="panel-heading">auction</div>
           <div class="panel-body">
-            {{ game.auction }}
+            <auction :auction="auction"></auction>
           </div>
         </div>
         <div class="panel panel-data">
@@ -45,9 +45,11 @@
 </template>
 
 <script>
+import bridge from 'bridge.js'
 import Board from '@/components/Board'
 import Games from '@/components/Games'
 import GameContract from '@/components/GameContract'
+import Auction from '@/components/Auction'
 
 const query = `
 query game($id: ID!) {
@@ -105,7 +107,13 @@ export default {
   components: {
     Board,
     Games,
-    GameContract
+    GameContract,
+    Auction
+  },
+  computed: {
+    auction () {
+      return new bridge.Auction(bridge.seat[this.game.board.dealer], this.game.auction)
+    }
   },
   methods: {
     fetch (gameId) {
