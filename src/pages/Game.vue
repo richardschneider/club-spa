@@ -27,6 +27,12 @@
               <game-contract :game="game"></game-contract>
             </div>
           </div>
+          <div class="panel panel-data">
+            <div class="panel-heading">score</div>
+            <div class="panel-body">
+              {{ game.score }}
+            </div>
+          </div>
           <div class="panel panel-data" v-if="auction.bids.length">
             <div class="panel-heading">auction</div>
             <div class="panel-body">
@@ -62,6 +68,7 @@ query game($id: ID!) {
     auction
     play
     lead
+    score
     NS { pair { id title } }
     EW { pair { id title } }
     made
@@ -75,16 +82,6 @@ query game($id: ID!) {
       id
       title
       date
-    }
-    NS {
-      pair {
-        title
-      }
-    }
-    EW {
-      pair {
-        title
-      }
     }
     board {
       id
