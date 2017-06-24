@@ -20,25 +20,28 @@
       <div class="col-sm-6">
         <board :board="game.board"></board>
       </div>
-      <div class="col-sm-6">
-        <div class="panel panel-data">
-          <div class="panel-heading">contract</div>
-          <div class="panel-body">
-            <game-contract :game="game"></game-contract>
+      <div class="col-sm-3">
+          <div class="panel panel-data">
+            <div class="panel-heading">contract</div>
+            <div class="panel-body">
+              <game-contract :game="game"></game-contract>
+            </div>
           </div>
-        </div>
-        <div class="panel panel-data" v-if="auction.bids.length">
-          <div class="panel-heading">auction</div>
-          <div class="panel-body">
-            <auction :auction="auction"></auction>
+          <div class="panel panel-data" v-if="auction.bids.length">
+            <div class="panel-heading">auction</div>
+            <div class="panel-body">
+              <auction :auction="auction"></auction>
+            </div>
           </div>
-        </div>
-        <div class="panel panel-data">
+      </div>
+      <div class="col-sm-3">
+        <div class="panel panel-data" v-if="game.play">
           <div class="panel-heading">play</div>
           <div class="panel-body">
-            NYI
+            <game-play :game="game"></game-play>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </div>
@@ -50,12 +53,14 @@ import Board from '@/components/Board'
 import Games from '@/components/Games'
 import GameContract from '@/components/GameContract'
 import Auction from '@/components/Auction'
+import GamePlay from '@/components/GamePlay'
 
 const query = `
 query game($id: ID!) {
   game (id: $id) {
     id
     auction
+    play
     lead
     NS { pair { id title } }
     EW { pair { id title } }
@@ -108,7 +113,8 @@ export default {
     Board,
     Games,
     GameContract,
-    Auction
+    Auction,
+    GamePlay
   },
   computed: {
     auction () {
