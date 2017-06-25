@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="game in games">
+      <tr v-for="game in orderedGames" v-bind:class="{ 'my-game': isMyGame(game) }">
         <td>
           <game-contract :game="game"></game-contract>
         </td>
@@ -40,6 +40,9 @@
 </template>
 
 <style>
+  .my-game {
+    font-weight: bold;
+  }
   .games .list-group-item {
     font-size: normal;
   }
@@ -55,11 +58,21 @@ import GameContract from '@/components/GameContract'
 import percent from '@/components/percent'
 
 export default {
-  props: ['games'],
+  props: ['games', 'myPairId'],
   components: {
     cardName,
     GameContract,
     percent
+  },
+  computed: {
+    orderedGames () {
+      return this.games.slice().sort((a, b) => b.NS.matchpointsPercentage - a.NS.matchpointsPercentage)
+    }
+  },
+  methods: {
+    isMyGame (game) {
+      return game.NS.pair.id === this.myPairId || game.EW.pair.id === this.myPairId
+    }
   }
 }
 

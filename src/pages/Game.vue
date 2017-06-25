@@ -49,7 +49,7 @@
         </div>
       </div>
       </div>
-    </div>
+    <games :games="game.board.games" :myPairId="game.NS.pair.id"></games>
   </div>
 </template>
 
@@ -89,6 +89,19 @@ query game($id: ID!) {
       dealer
       vulnerability
       deal
+      games {
+        id
+        lead
+        NS { pair { id shortTitle } matchpointsPercentage }
+        EW { pair { id shortTitle } matchpointsPercentage }
+        made
+        contract {
+          level
+          declaror
+          denomination
+          risk
+        }
+      }
     }
   }
 }`
