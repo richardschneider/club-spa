@@ -5,7 +5,8 @@ import { EventBus } from '@/eventbus.js'
 const memoize = require('p-memoize')
 
 var server = require('graphql-client')({
-  url: 'http://192.168.178.21:3001/graphql',
+  // url: 'http://192.168.178.21:3001/graphql',
+  url: 'https://club-server.herokuapp.com/graphql',
   headers: { }
 })
 
