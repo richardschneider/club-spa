@@ -25,7 +25,7 @@
 
 <style>
   table.solutions td, table.solutions th {
-    min-width: 1.5ex;
+    min-width: 1.1em;
     line-height: 120%;
     text-align: center;
   }

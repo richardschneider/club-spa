@@ -27,9 +27,9 @@
 
 <style>
   .board .cell {
-    min-width: 15ex;
-    padding-right: 1ex;
-    padding-left: 1ex;
+    min-width: 8em;
+    padding-right: 3px;
+    padding-left: 3px;
     vertical-align: top;
   }
   .board .cell.hcp {
