@@ -17,14 +17,26 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: "suits";
+  src:url("assets/suits.eot");
+  src:url("assets/suits.eot?#iefix") format("embedded-opentype"),
+    url("assets/suits.woff") format("woff"),
+    url("assets/suits.ttf") format("truetype"),
+    url("assets/suits.svg#suits") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 #app {
+  font-family: suits,"Helvetica Neue",Helvetica,Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin-top: 10px;
 }
 
 .spades, .hearts, .diams, .clubs {
-  font-size: 120%;
+  font-size: 80%;
   line-height: 100%;
 }
 .spades, .clubs {
