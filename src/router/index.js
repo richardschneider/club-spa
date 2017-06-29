@@ -5,7 +5,6 @@ import Club from '@/components/Club'
 import ClubSessions from '@/components/ClubSessions'
 import session from '@/pages/session'
 import SessionPairResults from '@/pages/SessionPairResults'
-import Board from '@/pages/Board'
 import Game from '@/pages/Game'
 
 Vue.use(Router)
@@ -50,11 +49,6 @@ export default new Router({
           component: require('../pages/session/ladder')
         }
       ]
-    },
-    {
-      name: 'board',
-      path: '/board/:id',
-      component: Board
     },
     {
       name: 'game',
