@@ -6,12 +6,12 @@
     <games :games="board.games"></games>
       <ul class="pager" v-if="session.boards.length > 1">
         <li>
-          <router-link :to="{ name: 'boards', params: { number: nextBoardNumber(-1) }}">
+          <router-link :to="{ name: 'board', params: { number: nextBoardNumber(-1) }}">
             <i class="fa fa-angle-left" aria-hidden="true"></i> previous
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'boards', params: { number: nextBoardNumber(1) }}">
+          <router-link :to="{ name: 'board', params: { number: nextBoardNumber(1) }}">
             next <i class="fa fa-angle-right" aria-hidden="true"></i>
           </router-link>
         </li>

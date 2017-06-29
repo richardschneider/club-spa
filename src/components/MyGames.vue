@@ -16,7 +16,7 @@
     <tbody>
       <tr v-for="game in orderdGames">
         <td>
-          <router-link :to="{ name: 'boards', params: { id: pair.session.id, number: game.board.number }}">
+          <router-link :to="{ name: 'board', params: { id: pair.session.id, number: game.board.number }}">
             {{ game.board.number }}
           </router-link>
         </td>

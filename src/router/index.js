@@ -40,9 +40,9 @@ export default new Router({
           component: require('../pages/session/results')
         },
         {
-          name: 'boards',
-          path: 'boards-:number',
-          component: require('../pages/session/boards')
+          name: 'board',
+          path: 'board-:number',
+          component: require('../pages/session/board')
         },
         {
           path: 'ladder',

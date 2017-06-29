@@ -6,8 +6,8 @@
       <li v-bind:class="{ active: isActive('results') }">
         <router-link to="results">results</router-link>
       </li>
-      <li v-bind:class="{ active: isActive('boards') }">
-        <router-link :to="{ name: 'boards', params: { number: boardNumber }}">boards</router-link>
+      <li v-bind:class="{ active: isActive('board') }">
+        <router-link :to="{ name: 'board', params: { number: boardNumber }}">boards</router-link>
       </li>
       <li v-bind:class="{ active: isActive('ladder') }">
         <router-link to="ladder">ladder</router-link>
