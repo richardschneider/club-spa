@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/pages/Hello'
 import Club from '@/components/Club'
 import ClubSessions from '@/components/ClubSessions'
-import SessionResults from '@/pages/SessionResults'
+import session from '@/pages/session'
 import SessionPairResults from '@/pages/SessionPairResults'
 import Board from '@/pages/Board'
 import Game from '@/pages/Game'
@@ -27,9 +27,29 @@ export default new Router({
       component: ClubSessions
     },
     {
-      name: 'session-results',
-      path: '/session/:id/results',
-      component: SessionResults
+      name: 'session',
+      path: '/session/:id',
+      component: session,
+      children: [
+        {
+          path: '',
+          component: require('../pages/session/results')
+        },
+        {
+          name: 'session-results',
+          path: 'results',
+          component: require('../pages/session/results')
+        },
+        {
+          name: 'boards',
+          path: 'boards-:number',
+          component: require('../pages/session/boards')
+        },
+        {
+          path: 'ladder',
+          component: require('../pages/session/ladder')
+        }
+      ]
     },
     {
       name: 'board',
