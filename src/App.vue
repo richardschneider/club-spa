@@ -124,4 +124,8 @@ export default {
     font-size: 110%;
   }
 
+  .ap-suggestion em {
+    color: #F06E0E;
+  }
+
 </style>

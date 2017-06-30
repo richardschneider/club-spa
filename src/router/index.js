@@ -26,6 +26,11 @@ export default new Router({
       component: ClubSessions
     },
     {
+      name: 'club-edit',
+      path: '/club/:id/edit',
+      component: require('../pages/club/edit')
+    },
+    {
       name: 'session',
       path: '/session/:id',
       component: session,
