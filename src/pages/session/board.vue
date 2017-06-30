@@ -1,6 +1,6 @@
 <template>
   <div v-if="board.id">
-    <v-touch v-on:swiperight="nextBoard(-1)" v-on:swipeleft="nextBoard(1)">
+    <v-touch v-on:swiperight="go(-1)" v-on:swipeleft="go(1)">
       <board :board="board"></board>
     </v-touch>
     <games :games="board.games"></games>
@@ -100,7 +100,6 @@ export default {
       vm.$bridgeclub.query(queryBoard, { id: board.id })
         .then(body => {
           vm.board = body.data.board
-          window.scrollTo(0, 0)
         })
     },
     nextBoardNumber (incr) {
@@ -108,6 +107,11 @@ export default {
       if (n < 0) n = this.session.boards.length - 1
       n = n % this.session.boards.length
       return this.session.boards[n].number
+    },
+    go (incr) {
+      this.$router.push({
+        name: 'board',
+        params: { number: this.nextBoardNumber(incr) }})
     }
   }
 }
