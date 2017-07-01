@@ -9,6 +9,10 @@
       <input v-model="club.email" id="email" type="email" class="form-control" >
     </div>
     <div class="form-group">
+      <label for="phone">phone</label>
+      <input v-model="club.phone" id="phone" type="phone" class="form-control" >
+    </div>
+    <div class="form-group">
       <label for="address">address</label>
       <places
         id="address"
@@ -32,6 +36,8 @@ const query = `
 query club($id: ID!) {
   club(id: $id) {
     name
+    email
+    phone
     address {
       name
       city
