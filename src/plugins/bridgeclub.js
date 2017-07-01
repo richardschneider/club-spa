@@ -13,8 +13,9 @@ var server = require('graphql-client')({
 function query (query, variables) {
   return server
     .query(query, variables || {})
-    .catch(function () {
-      let e = new Error('Bridge Club server failure')
+    .catch(function (e) {
+      console.error(e)
+      e = new Error('Bridge Club server failure')
       EventBus.$emit('error', e)
       throw e
     })
@@ -22,7 +23,11 @@ function query (query, variables) {
 
 const plugin = {
   install (Vue, options) {
-    Vue.prototype.$bridgeclub = { query: memoize(query) }
+    Vue.prototype.$bridgeclub = {
+      query: memoize(query),
+      queryNoCache: query,
+      mutate: query
+    }
   }
 }
 
