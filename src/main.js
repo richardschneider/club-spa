@@ -7,11 +7,18 @@ import bridgeclub from './plugins/bridgeclub'
 import VueTouch from 'vue-touch'
 import 'vue-event-calendar/dist/style.css'
 import vueEventCalendar from 'vue-event-calendar'
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.use(vueEventCalendar, {locale: 'en'})
 Vue.use(VueTouch, {name: 'v-touch'})
 Vue.use(bridgeclub)
 Vue.config.productionTip = false
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyBXgzADYa8ugpXsQDqvL00QXtoWDvByYB4'
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,9 +1,37 @@
 <template>
   <div v-if="club">
-    <contact :contact="contact"></contact>
-    <a v-bind:href="vcardUrl">
-      <i class="fa fa-vcard-o" style="font-size:34px"></i>
-    </a>
+    <div class="row">
+      <div class="col-sm-4">
+        <gmap-map
+          :center="geo"
+          :zoom="15"
+          map-type-id="roadmap"
+          style="width: 100%; height: 240px;">
+            <gmap-marker
+              :clickable="true"
+              @click="directions"
+              title="get directions"
+              :position="geo">
+            </gmap-marker>
+        </gmap-map>
+      </div>
+      <div class="col-sm-8">
+        <contact :contact="contact"></contact>
+        <br/>
+        <ul class="list-inline">
+          <li>
+            <a v-bind:href="vcardUrl">
+              <i class="fa fa-vcard-o fa-lg"></i>
+            </a>
+          </li>
+          <li>
+            <a v-bind:href="directionsUrl">
+              <i class="fa fa-car fa-lg"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -55,6 +83,15 @@ export default {
     },
     vcardUrl () {
       return `https://club-server.herokuapp.com/club/${this.club.id}/vcard`
+    },
+    directionsUrl () {
+      return `https://www.google.com/maps/dir/?api=1&destination=${this.club.address.lat},${this.club.address.lng}`
+    },
+    geo () {
+      return {
+        lat: this.club.address.lat,
+        lng: this.club.address.lng
+      }
     }
   },
   components: {
@@ -68,7 +105,11 @@ export default {
         .then(body => {
           vm.club = body.data.club
         })
+    },
+    directions () {
+      window.location.href = this.directionsUrl
     }
+
   }
 }
 </script>
