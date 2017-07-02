@@ -1,6 +1,5 @@
 <template>
   <div class="sessions">
-    <h1>{{ clubName }}</h1>
     <vue-event-calendar
       :events="sessions"
       @month-changed="fetch()">

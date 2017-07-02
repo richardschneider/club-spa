@@ -38,13 +38,13 @@ export default new Router({
           name: 'club-home',
           path: 'home',
           component: require('../pages/club/home')
+        },
+        {
+          name: 'club-sessions',
+          path: 'sessions',
+          component: ClubSessions
         }
       ]
-    },
-    {
-      name: 'club-sessions',
-      path: '/club/:id/sessions',
-      component: ClubSessions
     },
     {
       name: 'club-edit',
