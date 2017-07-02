@@ -21,6 +21,27 @@ export default new Router({
       component: Club
     },
     {
+      name: 'club',
+      path: '/club/:id',
+      component: require('../pages/club'),
+      children: [
+        {
+          path: '',
+          component: require('../pages/club/home')
+        },
+        {
+          name: 'club-contact',
+          path: 'contact',
+          component: require('../pages/club/contact')
+        },
+        {
+          name: 'club-home',
+          path: 'home',
+          component: require('../pages/club/home')
+        }
+      ]
+    },
+    {
       name: 'club-sessions',
       path: '/club/:id/sessions',
       component: ClubSessions
