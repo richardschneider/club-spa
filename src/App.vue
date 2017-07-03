@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <error-view></error-view>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import errorView from '@/components/Error'
+import { EventBus } from '@/eventbus.js'
 
 export default {
   name: 'app',
-  components: {
-    errorView
+  created () {
+    EventBus.$on('error', this.show)
+  },
+  methods: {
+    show (e) {
+      this.$toast(e.message || e.toString())
+    }
   }
 }
 </script>
