@@ -8,7 +8,10 @@ import VueTouch from 'vue-touch'
 import 'vue-event-calendar/dist/style.css'
 import vueEventCalendar from 'vue-event-calendar'
 import * as VueGoogleMaps from 'vue2-google-maps'
+import 'vue2-toast/lib/toast.css'
+import Toast from 'vue2-toast'
 
+Vue.use(Toast)
 Vue.use(vueEventCalendar, {locale: 'en'})
 Vue.use(VueTouch, {name: 'v-touch'})
 Vue.use(bridgeclub)
