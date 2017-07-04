@@ -24,7 +24,7 @@
             </div>
             <div class="checkbox">
                  <label>
-                 <input type="checkbox"> remember me
+                 <input type="checkbox" v-model="remember"> remember me
                  </label>
             </div>
          </form>
@@ -43,7 +43,8 @@ export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      remember: false
     }
   },
   computed: {
@@ -55,7 +56,7 @@ export default {
         password: this.password
       }
       auth
-        .login(this, credentials)
+        .login(this, credentials, this.remember)
         .catch(err => EventBus.$emit('error', err))
     }
   }

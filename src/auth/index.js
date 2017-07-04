@@ -16,11 +16,13 @@ export default {
 
   // Send a request to the login URL and save the returned authorization
   // emits 'authorization' with { url: '...', authorization: 'Bearer ...'}
-  login (context, creds) {
+  login (context, creds, remember) {
     return context.$http
       .post(LOGIN_URL, creds)
       .then(res => {
-        localStorage.setItem('authorization', res.data.authorization)
+        if (remember) {
+          localStorage.setItem('authorization', res.data.authorization)
+        }
         this.user.authenticated = true
         EventBus.$emit('authorization', { url: API_URL, authorization: res.data.authorization })
         return true
