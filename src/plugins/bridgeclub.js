@@ -25,7 +25,6 @@ function query (query, variables) {
 
 // Add authorization information into the request headers
 EventBus.$on('authorization', function (e) {
-  console.log('auth event', e)
   options.headers.Authorization = e.authorization
   server = graphql(options)
 })

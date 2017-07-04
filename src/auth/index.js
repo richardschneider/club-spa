@@ -3,7 +3,7 @@
 import {EventBus} from '@/eventbus.js'
 
 // URL and endpoint constants
-const API_URL = 'http://localhost:3001/' // 'https://club-server.herokuapp.com/'
+const API_URL = 'https://club-server.herokuapp.com/'
 const LOGIN_URL = API_URL + 'login'
 const SIGNUP_URL = API_URL + 'signup'
 
@@ -46,7 +46,8 @@ export default {
   },
 
   // To log out, we just need to remove the authorization
-  logout (context) {
+  logout () {
+    // TODO: tell server
     localStorage.removeItem('authorization')
     EventBus.$emit('authorization', { url: API_URL, authorization: null })
     this.user.authenticated = false

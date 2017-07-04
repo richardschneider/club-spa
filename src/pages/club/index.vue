@@ -12,7 +12,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                  <li><router-link :to="{ name: 'club-sessions', params: { id: club.id }}">Results</router-link></li>
+                  <li>
+                    <router-link data-toggle="collapse"
+                      data-target=".navbar-collapse"
+                      :to="{ name: 'club-sessions', params: { id: club.id }}">
+                        Results
+                    </router-link>
+                  </li>
                   <li>
                     <router-link
                       data-toggle="collapse"
@@ -22,14 +28,32 @@
                     </router-link>
                   </li>
                 </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" v-if="!loggedIn">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
+			<ul class="dropdown-menu">
+              <login></login>
+            </ul>
+        </li>
+        <li v-if="loggedIn">
+          <a href="#" data-toggle="collapse" data-target=".navbar-collapse" v-on:click.prevent="logout">Logout</a>
+        </li>
+    </ul>
             </div>
+
+
         </div>
     </div>
+
     <router-view style="margin-top: 60px"></router-view>
   </div>
 </template>
 
 <script>
+
+import Login from '@/auth/login'
+import auth from '@/auth'
+import { EventBus } from '@/eventbus.js'
 
 const query = `
 query club($id: ID!) {
@@ -41,6 +65,10 @@ query club($id: ID!) {
 
 export default {
   created () {
+    let vm = this
+    EventBus.$on('authorization', e => {
+      vm.loggedIn = !!e.authorization
+    })
     this.fetch(this.$route.params.id)
   },
   beforeRouteUpdate (to, from, next) {
@@ -49,12 +77,12 @@ export default {
   },
   data () {
     return {
-      club: null
+      club: null,
+      loggedIn: auth.user.authenticated
     }
   },
-  computed: {
-  },
   components: {
+    Login
   },
   methods: {
     fetch (clubId) {
@@ -64,6 +92,9 @@ export default {
         .then(body => {
           vm.club = body.data.club
         })
+    },
+    logout () {
+      auth.logout()
     }
   }
 }

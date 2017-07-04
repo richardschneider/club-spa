@@ -1,16 +1,14 @@
 <template>
   <!-- Initial template from https://bootsnipp.com/snippets/featured/fancy-navbar-login-sign-in-form -->
 
- <div class="row" id="login-dp">
-    <div class="col-md-12">
-        Login via
+ <div id="login-dp">
+    <div>
         <ul class="social-buttons list-inline">
           <li><a href="#" class="btn"><i class="fa fa-google"></i> Google</a></li>
           <li><a href="#" class="btn"><i class="fa fa-facebook"></i> Facebook</a></li>
           <li><a href="#" class="btn"><i class="fa fa-github"></i> Github</a></li>
           <li><a href="#" class="btn"><i class="fa fa-twitter"></i> Twitter</a></li>
         </ul>
-        or
          <form class="form" role="form" id="login-nav">
             <div class="form-group">
                  <label class="sr-only" for="email">email address</label>
@@ -22,17 +20,17 @@
             </div>
             <div class="form-group">
                  <button type="submit" @click="login" class="btn btn-primary">Sign in</button>
-                <a href="#" ><div id="forget">forget the password?</div></a>
+                <a href="#" ><div id="forget"><small>forgot password?</small></div></a>
             </div>
             <div class="checkbox">
                  <label>
-                 <input type="checkbox"> keep me logged-in
+                 <input type="checkbox"> remember me
                  </label>
             </div>
          </form>
     </div>
     <div class="bottom text-center">
-        New here ? <a href="#"><b>Join Us</b></a>
+        New here? <a href="#"><b>Join us</b></a>
     </div>
  </div>
 </template>
@@ -68,10 +66,21 @@ export default {
 #login-dp{
     min-width: 250px;
     max-width: 340px;
-    padding: 14px 14px 0;
+    padding: 6px 6px 0;
     overflow:hidden;
     background-color:rgba(255,255,255,.8);
 }
+
+  #login-dp .social-buttons {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 14px;
+    clear:both;
+  }
+
+  #login-dp .checkbox {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
 
 #login-dp .bottom{
     background-color:rgba(255,255,255,.8);
