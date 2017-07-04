@@ -10,7 +10,10 @@ import vueEventCalendar from 'vue-event-calendar'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import 'vue2-toast/lib/toast.css'
 import Toast from 'vue2-toast'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
+Vue.use(VueAxios, axios)
 Vue.use(Toast)
 Vue.use(vueEventCalendar, {locale: 'en'})
 Vue.use(VueTouch, {name: 'v-touch'})

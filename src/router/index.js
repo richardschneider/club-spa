@@ -17,6 +17,11 @@ export default new Router({
       component: Hello
     },
     {
+      path: '/login',
+      name: 'login',
+      component: require('../auth/login')
+    },
+    {
       path: '/club',
       component: Club
     },

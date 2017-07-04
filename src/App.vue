@@ -6,14 +6,19 @@
 
 <script>
 import { EventBus } from '@/eventbus.js'
+import auth from '@/auth'
 
 export default {
   name: 'app',
   created () {
     EventBus.$on('error', this.show)
+    auth.autoLogin()
   },
   methods: {
     show (e) {
+      if (e.response && e.response.data) {
+        e = e.response.data
+      }
       this.$toast(e.message || e.toString())
     }
   }

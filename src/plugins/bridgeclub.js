@@ -3,12 +3,14 @@
 
 import { EventBus } from '@/eventbus.js'
 const memoize = require('p-memoize')
+const graphql = require('graphql-client')
 
-var server = require('graphql-client')({
+let options = {
   // url: 'http://192.168.178.21:3001/graphql',
   url: 'https://club-server.herokuapp.com/graphql',
-  headers: { }
-})
+  headers: {}
+}
+var server = graphql(options)
 
 function query (query, variables) {
   return server
@@ -20,6 +22,13 @@ function query (query, variables) {
       throw e
     })
 }
+
+// Add authorization information into the request headers
+EventBus.$on('authorization', function (e) {
+  console.log('auth event', e)
+  options.headers.Authorization = e.authorization
+  server = graphql(options)
+})
 
 const plugin = {
   install (Vue, options) {

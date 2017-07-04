@@ -14,10 +14,12 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "bridge.js": "2.x",
     "graphql-client": "^1.1.0",
     "p-memoize": "^1.0.0",
     "vue": "^2.3.3",
+    "vue-axios": "^2.0.2",
     "vue-event-calendar": "^1.3.5",
     "vue-places": "^1.1.0",
     "vue-rate-it": "^1.1.5",
