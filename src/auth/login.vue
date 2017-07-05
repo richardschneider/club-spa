@@ -30,7 +30,7 @@
          </form>
     </div>
     <div class="bottom text-center">
-        New here? <a href="#"><b>Join us</b></a>
+      New here? <router-link to="/join"><b>Join us</b></router-link>
     </div>
  </div>
 </template>

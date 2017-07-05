@@ -17,9 +17,8 @@ export default new Router({
       component: Hello
     },
     {
-      path: '/login',
-      name: 'login',
-      component: require('../auth/login')
+      path: '/join',
+      component: require('../pages/user/join')
     },
     {
       path: '/club',
