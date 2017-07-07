@@ -4,7 +4,7 @@
  <div id="login-dp">
     <div>
         <ul class="social-buttons list-inline">
-          <li><a href="#" class="btn"><i class="fa fa-google"></i> Google</a></li>
+          <li><a :href="googleUrl" class="btn"><i class="fa fa-google"></i> Google</a></li>
           <li><a href="#" class="btn"><i class="fa fa-facebook"></i> Facebook</a></li>
           <li><a href="#" class="btn"><i class="fa fa-github"></i> Github</a></li>
           <li><a href="#" class="btn"><i class="fa fa-twitter"></i> Twitter</a></li>
@@ -44,7 +44,8 @@ export default {
     return {
       email: '',
       password: '',
-      remember: false
+      remember: false,
+      googleUrl: auth.googleUrl
     }
   },
   computed: {

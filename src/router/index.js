@@ -17,6 +17,15 @@ export default new Router({
       component: Hello
     },
     {
+      path: '/auth/:id/:auth',
+      component: require('../auth/callback')
+    },
+    {
+      name: 'user-home',
+      path: '/user/home',
+      component: require('../pages/user/home')
+    },
+    {
       path: '/join',
       component: require('../pages/user/join')
     },

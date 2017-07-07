@@ -9,6 +9,8 @@ const SIGNUP_URL = API_URL + 'signup'
 
 export default {
 
+  googleUrl: `${API_URL}auth/google`,
+
   // User object will let us check authentication status
   user: {
     authenticated: false
@@ -27,6 +29,14 @@ export default {
         EventBus.$emit('authorization', { url: API_URL, authorization: res.data.authorization })
         return true
       })
+  },
+
+  socialLogin (authorization, remember) {
+    if (remember) {
+      localStorage.setItem('authorization', authorization)
+    }
+    this.user.authenticated = true
+    EventBus.$emit('authorization', { url: API_URL, authorization: authorization })
   },
 
   autoLogin () {
