@@ -17,6 +17,7 @@
     "axios": "^0.16.2",
     "bridge.js": "2.x",
     "graphql-client": "^1.1.0",
+    "jwt-decode": "^2.2.0",
     "p-memoize": "^1.0.0",
     "vue": "^2.3.3",
     "vue-axios": "^2.0.2",

@@ -1,60 +1,53 @@
 /* Initial code from https://auth0.com/blog/build-an-app-with-vuejs/ */
 
 import {EventBus} from '@/eventbus.js'
+const jwtDecode = require('jwt-decode')
 
 // URL and endpoint constants
 const API_URL = 'https://club-server.herokuapp.com/'
 const LOGIN_URL = API_URL + 'login'
-const SIGNUP_URL = API_URL + 'signup'
+
+let user = {
+  authenticated: false,
+  id: 0,
+  name: ''
+}
+
+function setUser (authorization, remember) {
+  user.authenticated = !!authorization
+  if (user.authenticated) {
+    if (remember) {
+      localStorage.setItem('authorization', authorization)
+    }
+    let token = authorization.split(' ')[1]
+    let decoded = jwtDecode(token)
+    user.id = decoded.id
+    user.name = decoded.name
+    EventBus.$emit('authorization', { url: API_URL, authorization: authorization })
+  }
+}
 
 export default {
 
   googleUrl: `${API_URL}auth/google`,
 
-  // User object will let us check authentication status
-  user: {
-    authenticated: false
-  },
+  // User object will let us check authentication status. When authenticated
+  // it contains a name and an id.
+  user: user,
 
   // Send a request to the login URL and save the returned authorization
   // emits 'authorization' with { url: '...', authorization: 'Bearer ...'}
   login (context, creds, remember) {
     return context.$http
       .post(LOGIN_URL, creds)
-      .then(res => {
-        if (remember) {
-          localStorage.setItem('authorization', res.data.authorization)
-        }
-        this.user.authenticated = true
-        EventBus.$emit('authorization', { url: API_URL, authorization: res.data.authorization })
-        return true
-      })
+      .then(res => setUser(res.data.authorization, remember))
   },
 
-  socialLogin (authorization, remember) {
-    if (remember) {
-      localStorage.setItem('authorization', authorization)
-    }
-    this.user.authenticated = true
-    EventBus.$emit('authorization', { url: API_URL, authorization: authorization })
-  },
+  socialLogin: setUser,
 
   autoLogin () {
     let authorization = localStorage.getItem('authorization')
-    if (authorization) {
-      this.user.authenticated = true
-      EventBus.$emit('authorization', { url: API_URL, authorization: authorization })
-    }
-  },
-
-  signup (context, creds) {
-    context.$http.post(SIGNUP_URL, creds, (data) => {
-      localStorage.setItem('id_token', data.id_token)
-      localStorage.setItem('access_token', data.access_token)
-      this.user.authenticated = true
-    }).error((err) => {
-      EventBus.$emit('error', err)
-    })
+    setUser(authorization, false)
   },
 
   // To log out, we just need to remove the authorization
@@ -62,6 +55,8 @@ export default {
     // TODO: tell server
     localStorage.removeItem('authorization')
     EventBus.$emit('authorization', { url: API_URL, authorization: null })
-    this.user.authenticated = false
+    user.authenticated = false
+    user.id = 0
+    user.name = ''
   }
 }

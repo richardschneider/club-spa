@@ -17,7 +17,7 @@ export default new Router({
       component: Hello
     },
     {
-      path: '/auth/:id/:auth',
+      path: '/auth/:auth',
       component: require('../auth/callback')
     },
     {
