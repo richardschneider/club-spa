@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import auth from '@/auth'
+
 const mutate = `
 mutation join($name: String!, $email: String!, $password: String!) {
   createUser(name: $name, email: $email, password: $password) {
@@ -48,6 +50,8 @@ export default {
       let vm = this
       vm.$bridgeclub
         .mutate(mutate, { name: vm.name, email: vm.email, password: vm.password })
+        .then(() => auth.login(vm, { username: vm.email, password: vm.password }, true))
+        .then(() => vm.$router.push({ name: 'user-home' }))
     }
   }
 }
