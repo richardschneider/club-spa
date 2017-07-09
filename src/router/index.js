@@ -72,8 +72,13 @@ export default new Router({
               component: require('../pages/club/admin/profile')
             },
             {
+              name: 'club-admin-competitions',
               path: 'competitions',
               component: require('../pages/club/admin/competitions')
+            },
+            {
+              path: 'competition/:cid?',
+              component: require('../pages/club/admin/competition')
             }
           ]
         }

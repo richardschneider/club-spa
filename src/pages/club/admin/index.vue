@@ -10,7 +10,7 @@
       <li class="list-group-item" v-bind:class="{ current: isActive('profile') }">
         <router-link to="profile">Profile</router-link>
       </li>
-      <li class="list-group-item" v-bind:class="{ current: isActive('competitions') }">
+      <li class="list-group-item" v-bind:class="{ current: isActive('competition') }">
         <router-link to="competitions">Competitions</router-link>
       </li>
     </ul>
