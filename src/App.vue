@@ -59,13 +59,6 @@ export default {
   font-weight: bold;
 }
 
-.list-group-item {
-  font-size: larger;
-  border: none;
-  padding-left: 0;
-  padding-right: 0;
-}
-
 .rank {
   display: inline-block;
   min-width: 10px;

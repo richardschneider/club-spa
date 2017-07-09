@@ -56,13 +56,28 @@ export default new Router({
           name: 'club-sessions',
           path: 'sessions',
           component: ClubSessions
+        },
+        {
+          name: 'club-admin',
+          path: 'admin',
+          component: require('../pages/club/admin'),
+          children: [
+            {
+              path: '',
+              redirect: { name: 'club-admin-profile' }
+            },
+            {
+              name: 'club-admin-profile',
+              path: 'profile',
+              component: require('../pages/club/admin/profile')
+            },
+            {
+              path: 'competitions',
+              component: require('../pages/club/admin/competitions')
+            }
+          ]
         }
       ]
-    },
-    {
-      name: 'club-edit',
-      path: '/club/:id/edit',
-      component: require('../pages/club/edit')
     },
     {
       name: 'session',

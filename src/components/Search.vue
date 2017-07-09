@@ -56,6 +56,13 @@
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+.search-form .list-group-item {
+  font-size: larger;
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 </style>
 
 <script>
