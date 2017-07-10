@@ -26,6 +26,32 @@ Vue.use(VueGoogleMaps, {
   }
 })
 
+/*
+ * Date utilities.
+ */
+if (!Date.prototype.toBridgeHubDateString) {
+  (function () {
+    function pad (number) {
+      if (number < 10) {
+        return '0' + number
+      }
+      return number
+    }
+    /* eslint no-extend-native: ["error", { "exceptions": ["Date"] }] */
+    Date.prototype.toBridgeHubDateString = function () {
+      return this.getFullYear() +
+        '-' + pad(this.getMonth() + 1) +
+        '-' + pad(this.getDate())
+    }
+  }())
+}
+if (!Date.parseBridgeHubDate) {
+  Date.parseBridgeHubDate = function (s) {
+    let parts = s.split('-')
+    return new Date(parts[0], parseInt(parts[1], 10) - 1, parts[2])
+  }
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
