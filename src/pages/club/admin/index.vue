@@ -8,10 +8,10 @@
     <!-- List group -->
     <ul class="list-group menu">
       <li class="list-group-item" v-bind:class="{ current: isActive('profile') }">
-        <router-link to="profile">Profile</router-link>
+        <router-link :to="{ name: 'club-admin-profile' }">Profile</router-link>
       </li>
       <li class="list-group-item" v-bind:class="{ current: isActive('competition') }">
-        <router-link to="competitions">Competitions</router-link>
+        <router-link :to="{ name: 'club-admin-competitions' }">Competitions</router-link>
       </li>
     </ul>
   </div>

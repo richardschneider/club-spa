@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h4>New competition</h4>
+    <h4 v-if="!competitionId">New competition</h4>
+    <h4 v-if="competitionId">Change competition</h4>
     <hr/>
     <form class="competition-form">
       <div class="form-group">
@@ -25,6 +26,13 @@
 </template>
 
 <script>
+const query = `
+query competition($id: ID!) {
+  competition(id: $id) {
+    name
+    type
+  }
+}`
 
 const mutate = `
 mutation save($id: ID, $input: CompetitionInput) {
@@ -33,6 +41,11 @@ mutation save($id: ID, $input: CompetitionInput) {
   }
 }
 `
+
+const defaultCompetition = {
+  name: '',
+  type: 'club'
+}
 
 export default {
   created () {
@@ -44,11 +57,7 @@ export default {
   },
   data () {
     return {
-      competition: {
-        name: '',
-        type: 'club',
-        clubId: null
-      },
+      competition: {},
       competitionId: null
     }
   },
@@ -62,8 +71,24 @@ export default {
   },
   methods: {
     fetch (clubId, competitionId) {
-      if (clubId) {
-        this.competition.clubId = clubId
+      let vm = this
+      if (arguments.length === 0) {
+        clubId = vm.competition.clubId
+        competitionId = vm.competitionId
+      }
+      vm.competition = Object.assign({}, defaultCompetition)
+      vm.competition.clubId = clubId
+      vm.competitionId = competitionId
+      if (vm.competitionId) {
+        vm.$bridgeclub.queryNoCache(query, { id: vm.competitionId })
+          .then(body => {
+            if (body.data.competition) {
+              vm.competition = body.data.competition
+              vm.competition.clubId = clubId
+            } else {
+              vm.competitionId = null
+            }
+          })
       }
     },
     save () {
